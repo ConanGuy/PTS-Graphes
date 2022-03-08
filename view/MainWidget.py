@@ -12,6 +12,7 @@ class MainWidget(QWidget):
         # Initialize tab screen
         self.tabs = QTabWidget()
         self.tabs.setTabsClosable(True)
+        self.tabs.setMovable(True)
         self.tabs.tabCloseRequested.connect(self.close_tab_handler)
 
         self.plusTabWidget = PlusTabWidget(self)
@@ -26,7 +27,8 @@ class MainWidget(QWidget):
         self.setLayout(self.layout)
 
     def add_tab(self, widget, title):
-        self.tabs.insertTab(len(self.tabs)-1, widget, title)
+        self.tabs.insertTab(self.tabs.currentIndex(), widget, title)
+        self.tabs.setCurrentIndex(self.tabs.currentIndex()-1)
 
     def close_tab_handler(self, index):
         self.tabs.removeTab(index)
