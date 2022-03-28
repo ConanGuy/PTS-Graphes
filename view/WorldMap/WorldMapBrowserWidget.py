@@ -16,6 +16,8 @@ class WorldMapBrowserWidget(QtWidgets.QWidget):
     def __init__(self, parent):
         super(QWidget, self).__init__(parent)
 
+        self.graphs = {"us": None, "fr": None}
+
         self.browser = QtWebEngineWidgets.QWebEngineView(self)
         self.fig = self.get_fig()
         self.save_fig()
@@ -65,6 +67,8 @@ class WorldMapBrowserWidget(QtWidgets.QWidget):
         fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
         fig.update_layout(showlegend=False)
 
+        self.graphs["us"] = graph
+
         return fig
 
     def load_fr(self):
@@ -106,6 +110,8 @@ class WorldMapBrowserWidget(QtWidgets.QWidget):
         fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
         fig.update_layout(showlegend=False)
 
+        self.graphs["fr"] = graph
+        
         return fig
 
     def get_fig(self, center={"lat": 46.8517, "lon": 1.7073}):

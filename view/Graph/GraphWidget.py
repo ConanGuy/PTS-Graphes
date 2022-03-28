@@ -15,12 +15,12 @@ from view.Graph.GraphActionWidget import GraphActionWidget
 
 class GraphWidget(QWidget):
 
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, graph=None):
         super(GraphWidget,self).__init__(parent)
 
         self.options = Options()
 
-        g = generate_random_graph("NEIGHBORS_AMOUNT")
+        g = generate_random_graph("NEIGHBORS_AMOUNT") if graph is None else graph
 
         self.graph = GraphGUI(g.vertices, g.edges)
         self.init_graph_points()

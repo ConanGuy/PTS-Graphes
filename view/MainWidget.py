@@ -18,7 +18,7 @@ class MainWidget(QWidget):
 
         self.plusTabWidget = PlusTabWidget(self)
 
-        self.tabs.addTab(GraphWidget(self), "Graph 1")
+        self.tabs.addTab(GraphWidget(self), "Graph")
         self.tabs.addTab(self.plusTabWidget, "+")
 
         self.tabs.tabBar().setTabButton(1, QTabBar.RightSide, None)

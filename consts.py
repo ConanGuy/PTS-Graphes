@@ -8,13 +8,13 @@ COLORS = dict(mcolors.BASE_COLORS, **mcolors.CSS4_COLORS)
 
 COLORS_ORDER = [
     "midnightblue", 
-    "orchid", 
+    "orange", 
     "indianred", 
     "lightseagreen", 
     "royalblue", 
     "darkolivegreen", 
     "purple", 
-    "orange", 
+    "orchid", 
     "goldenrod", 
     "moccasin", 
     "sandybrown", 

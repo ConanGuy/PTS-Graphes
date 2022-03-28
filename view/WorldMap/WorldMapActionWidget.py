@@ -3,7 +3,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
 
 from consts import *
-from view.Graph.GraphGUI import VertexGUI
+from view.Graph.GraphWidget import GraphWidget
 from options import Options
 
 class WorldMapActionWidget(QtWidgets.QWidget):   
@@ -31,10 +31,30 @@ class WorldMapActionWidget(QtWidgets.QWidget):
         buttonCenterFR.clicked.connect(centerFR)
 
             ########
+
+        def graphWidgetUS():
+            graphWidget = GraphWidget(self, self.parent().browserWidget.graphs["us"])
+            self.parent().parent().parent().parent().add_tab(graphWidget, "Graph US")
+
+        buttonGraphUS = QPushButton("Show US graph")
+        buttonGraphUS.clicked.connect(graphWidgetUS)
+
+            ########
+
+        def graphWidgetFR():
+            graphWidget = GraphWidget(self, self.parent().browserWidget.graphs["fr"])
+            self.parent().parent().parent().parent().add_tab(graphWidget, "Graph FR")
+
+        buttonGraphFR = QPushButton("Show FR graph")
+        buttonGraphFR.clicked.connect(graphWidgetFR)
+
+            ########
             
-        self.setMaximumHeight(50)
+        self.setMaximumHeight(100)
 
         gLayout = QGridLayout()
         gLayout.addWidget(buttonCenterFR, 0, 0)
         gLayout.addWidget(buttonCenterUS, 0, 1)
+        gLayout.addWidget(buttonGraphFR, 1, 0)
+        gLayout.addWidget(buttonGraphUS, 1, 1)
         self.setLayout(gLayout)
