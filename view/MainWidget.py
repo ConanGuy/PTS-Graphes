@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import *
 
 from view.Graph.GraphWidget import GraphWidget
 from view.PlusTabWidget import PlusTabWidget
+from view.WorldMap.WorldMapWidget import WorldMapWidget
 
 class MainWidget(QWidget):
     

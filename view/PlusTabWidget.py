@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import *
 
 from view.Graph.GraphWidget import GraphWidget
+from view.WorldMap.WorldMapWidget import WorldMapWidget
 
 class PlusTabWidget(QWidget):
 
@@ -9,12 +10,18 @@ class PlusTabWidget(QWidget):
 
         self.layout = QGridLayout(self)
 
-        self.btnGraph = QPushButton("New Graph Tab")
-        self.btnMap = QPushButton("New Map Tab")
+        self.btnGraph = QPushButton("")
+        self.btnMap = QPushButton("N")
         self.btnSchedule = QPushButton("New Schedule Tab")
-        self.btnSudoku = QPushButton("New Sudoku Tab")
+        self.btnSudoku = QPushButton("New Comparison Tab")
 
         self.btnGraph.clicked.connect(lambda: self.add_tab(GraphWidget(self.parent()), "Graph"))
+        self.btnMap.clicked.connect(lambda: self.add_tab(WorldMapWidget(self.parent()), "World Map"))
+
+        self.btnGraph.setStyleSheet("background-image : url(res/imgs/GraphWidget.png);")
+        self.btnGraph.setFixedSize(640, 360)
+        self.btnMap.setStyleSheet("background-image : url(res/imgs/WorldMapWidget.png);")
+        self.btnMap.setFixedSize(640, 360)
 
         self.layout.addWidget(self.btnGraph, 0, 0)
         self.layout.addWidget(self.btnMap, 0, 1)

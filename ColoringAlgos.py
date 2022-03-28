@@ -141,7 +141,6 @@ class ColoringAlgos:
     @verification
     def color(graph):
         def global_color(graph):
-
             for vertex in graph.vertices:
                 for color in COLORS_ORDER:
                     if color not in [neighbor.color for neighbor in graph[vertex]]:
