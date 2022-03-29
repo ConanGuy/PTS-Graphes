@@ -61,14 +61,13 @@ class ColoringAlgos:
             assert isinstance(graph, Graph), "Graph required, "+type(graph).__name__+" found"
 
             if not (graph_is_valid(graph) and not graph_is_oriented(graph)):
-                print("Not valid")
                 return
 
             algo = function.__name__
             if eval("VerifAlgos."+algo)(graph):
                 function(graph)
             else:
-                print("NE PEUT PAS ETRE COLORIE AVEC")
+                pass
         return other
     
     @verification
@@ -259,7 +258,7 @@ class ColoringAlgos:
     ############################## 
     @verification
     def bipartite(graph):
-        def global_bipartite() :
+        def global_bipartite(graph) :
             current, other = set(), set()
             col1, col2 = COLORS_ORDER[0:2]
             pile = set()

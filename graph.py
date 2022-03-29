@@ -67,6 +67,7 @@ class Graph(dict):
     def add_vertex(self, vertex):
         self[vertex] = VerticesList()
         self.vertices.add(vertex)
+        
     def add_edge(self, edge):
         assert all(vertex in self.vertices for vertex in edge), "One of the vertices of the edge is not set in the graph"
 

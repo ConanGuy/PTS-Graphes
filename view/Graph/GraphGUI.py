@@ -8,7 +8,7 @@ class GraphGUI(Graph):
         super().__init__()
         
         for v in vertices:
-            self.add_vertex(v if isinstance(v, VertexGUI) else VertexGUI(0,0,vertex=v))
+            self.add_vertex(v.copy() if isinstance(v, VertexGUI) else VertexGUI(0,0,vertex=v))
         for e in edges:
             v1 = self.vertices[e[0].id]
             v2 = self.vertices[e[1].id]
@@ -52,6 +52,9 @@ class GraphGUI(Graph):
 
     def load(filename):
         return pickle.load("saves/"+filename+".ggui")
+    
+    def copy(self):
+        return GraphGUI(self.vertices, self.edges)
 
 ##################################
 
@@ -72,3 +75,6 @@ class VertexGUI(Vertex):
     @pos.setter
     def pos(self, pos):
         self.x, self.y = pos
+        
+    def copy(self):
+        return VertexGUI(self.x, self.y, border=self.border, value=self.value, name=self.name, id=self.id)

@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import *
 from view.Graph.GraphWidget import GraphWidget
 from view.WorldMap.WorldMapWidget import WorldMapWidget
 from view.Schedule.ScheduleWidget import ScheduleWidget
+from view.Comparison.ComparisonWidget import ComparisonWidget
 
 class PlusTabWidget(QWidget):
 
@@ -14,11 +15,12 @@ class PlusTabWidget(QWidget):
         self.btnGraph = QPushButton("")
         self.btnMap = QPushButton("")
         self.btnSchedule = QPushButton("")
-        self.btnSudoku = QPushButton("New Comparison Tab")
+        self.btnComparison = QPushButton("")
 
         self.btnGraph.clicked.connect(lambda: self.add_tab(GraphWidget(self.parent()), "Graph"))
         self.btnMap.clicked.connect(lambda: self.add_tab(WorldMapWidget(self.parent()), "World Map"))
         self.btnSchedule.clicked.connect(lambda: self.add_tab(ScheduleWidget(self.parent()), "Schedule"))
+        self.btnComparison.clicked.connect(lambda: self.add_tab(ComparisonWidget(self.parent()), "Comparison"))
 
         self.btnGraph.setStyleSheet("background-image : url(res/imgs/GraphWidget.png);")
         self.btnGraph.setFixedSize(640, 360)
@@ -26,11 +28,13 @@ class PlusTabWidget(QWidget):
         self.btnMap.setFixedSize(640, 360)
         self.btnSchedule.setStyleSheet("background-image : url(res/imgs/ScheduleWidget.png);")
         self.btnSchedule.setFixedSize(640, 360)
+        self.btnComparison.setStyleSheet("background-image : url(res/imgs/ComparisonWidget.png);")
+        self.btnComparison.setFixedSize(640, 360)
 
         self.layout.addWidget(self.btnGraph, 0, 0)
         self.layout.addWidget(self.btnMap, 0, 1)
         self.layout.addWidget(self.btnSchedule, 1, 0)
-        self.layout.addWidget(self.btnSudoku, 1, 1)
+        self.layout.addWidget(self.btnComparison, 1, 1)
 
         self.setLayout(self.layout)
 
